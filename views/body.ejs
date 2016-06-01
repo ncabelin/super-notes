@@ -1,0 +1,42 @@
+<% include header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>SuperNotes</h1>
+            <p>Create instant flashcards during note taking.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="/save" method="POST">
+                <input type="text" name="question" placeholder="question">
+                <input type="text" name="answer" placeholder="answer">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 center-block">
+            <table class="table table-hover">
+                <tr>
+                    <th>QUESTION</th>
+                    <th>ANSWER</th>
+                    <th>ACTION</th>
+                </tr>
+                <% notesData.forEach(function(noteEntry) { %>
+                <tr>
+                    <td><%= noteEntry.question %></td>
+                    <td><%= noteEntry.answer %></td>
+                    <td>
+                        <a href="/edit/<%= noteEntry._id %>" class="btn btn-success">Edit</a>
+                        <a href="/delete/<%= noteEntry._id %>" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+    </div>
+</div>
+
+<% include footer %>
