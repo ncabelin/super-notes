@@ -9,7 +9,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
-mongoose.connect('mongodb://localhost/notes_app');
+//mongoose.connect('mongodb://localhost/notes_app');
+mongoose.connect('mongodb://mike:incubus2180@ds021663.mlab.com:21663/supernotes');
 var noteSchema = new mongoose.Schema({
    question: String,
    answer: String
